@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <com.example.snake.gameView
+        android:id="@+id/gv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.example.snake.gameView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="#114913"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_height="75dp">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/apple"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content">
+                </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/score"
+                    android:textColor="#FFFFFF"
+                    android:layout_centerInParent="true"
+                    android:textSize="30dp"
+                    android:text="X 0"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/baseline_wine_bar_24"
+                    app:tint="#A8B807"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/bestScore"
+                    android:textColor="#FFFFFF"
+                    android:layout_centerInParent="true"
+                    android:textSize="30dp"
+                    android:text="X 0"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
