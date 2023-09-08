@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <com.example.snake.gameView
         android:id="@+id/gv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.example.snake.gameView>
+        android:layout_height="match_parent"></com.example.snake.gameView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
@@ -71,5 +72,19 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="133dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="137dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="345dp"
+        android:text="Начать заново" />
 
 </RelativeLayout>
