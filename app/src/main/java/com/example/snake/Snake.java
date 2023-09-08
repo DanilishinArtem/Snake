@@ -40,7 +40,7 @@ public class Snake {
             arrPartSnake.add(new PartSnake(bm_body_horizontal, arrPartSnake.get(i - 1).getX() - gameView.sizeOfMap, y));
         }
         arrPartSnake.add(new PartSnake(bm_tail_right, arrPartSnake.get(length - 2).getX() - gameView.sizeOfMap, y));
-        setMove_right(true);
+        setMove_right();
 
     }
     public void draw(Canvas canvas){
@@ -109,45 +109,47 @@ public class Snake {
             arrPartSnake.get(length-1).setBm(bm_tail_down);
         }
     }
-    public void s(){
-        this.move_bottom = false;
-        this.move_left = false;
-        this.move_right = false;
-        this.move_top = false;
-    }
     public boolean isMove_left() {
         return this.move_left;
     }
-    public void setMove_left(boolean move_left) {
-        s();
-        this.move_left = move_left;
+    public void setMove_left() {
+        move_left = true;
+        move_top = false;
+        move_right = false;
+        move_bottom = false;
     }
 
     public boolean isMove_right() {
         return this.move_right;
     }
 
-    public void setMove_right(boolean move_right) {
-        s();
-        this.move_right = move_right;
+    public void setMove_right() {
+        move_left = false;
+        move_top = false;
+        move_right = true;
+        move_bottom = false;
     }
 
     public boolean isMove_top() {
         return this.move_top;
     }
 
-    public void setMove_top(boolean move_top) {
-        s();
-        this.move_top = move_top;
+    public void setMove_top() {
+        move_left = false;
+        move_top = true;
+        move_right = false;
+        move_bottom = false;
     }
 
     public boolean isMove_bottom() {
         return this.move_bottom;
     }
 
-    public void setMove_bottom(boolean move_bottom) {
-        s();
-        this.move_bottom = move_bottom;
+    public void setMove_bottom() {
+        move_left = false;
+        move_top = false;
+        move_right = false;
+        move_bottom = true;
     }
 
 

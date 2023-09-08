@@ -25,6 +25,7 @@ import android.widget.LinearLayout;
 import java.util.logging.LogRecord;
 
 public class gameView extends View {
+    float startX = (float) 0, startY = (float) 0, endX, endY, deltaX, deltaY;
     private TextView scoreText, BestScore;
     private int bestScore;
     Button button;
@@ -108,32 +109,26 @@ public class gameView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
          int a = event.getActionMasked();
-         switch (a){
-             case MotionEvent.ACTION_MOVE:{
-                 if(move == false){
-                     mx = event.getX();
-                     my = event.getY();
-                     move = true;
-                 }else{
-                     if((mx - event.getX() > 100 * constants.SCREEN_WIDTH / 1000) && !snake.isMove_right()){
-                         mx = event.getX();
-                         my = event.getY();
-                         snake.setMove_left(true);
-                     }else if((event.getX() - mx > 100 * constants.SCREEN_WIDTH / 1000) && !snake.isMove_left()){
-                         mx = event.getX();
-                         my = event.getY();
-                         snake.setMove_right(true);
-                     }else if((my - event.getY() > 100 * constants.SCREEN_WIDTH / 1000) && !snake.isMove_bottom()){
-                         mx = event.getX();
-                         my = event.getY();
-                         snake.setMove_top(true);
-                     }else if((event.getY() - my > 100 * constants.SCREEN_WIDTH / 1000) && !snake.isMove_top()){
-                         mx = event.getX();
-                         my = event.getY();
-                         snake.setMove_bottom(true);
-                     }
-                 }
-                 break;
+         if(a == event.ACTION_DOWN){
+             startX = event.getX();
+             startY = event.getY();
+         }else if(a == event.ACTION_UP){
+             endX = event.getX();
+             endY = event.getY();
+             deltaX = endX - startX;
+             deltaY = endY - startY;
+             if(!snake.isMove_left() && deltaX > 0 && Math.max(Math.abs(deltaX), Math.abs(deltaY)) == Math.abs(deltaX) && Math.abs(deltaX) > gameView.sizeOfMap){
+                 // вправо
+                 snake.setMove_right();
+             }else if(!snake.isMove_right() && deltaX < 0 && Math.max(Math.abs(deltaX), Math.abs(deltaY)) == Math.abs(deltaX) && Math.abs(deltaX) > gameView.sizeOfMap){
+                 // влево
+                 snake.setMove_left();
+             }else if(!snake.isMove_top() && deltaY > 0 && Math.max(Math.abs(deltaX), Math.abs(deltaY)) == Math.abs(deltaY) && Math.abs(deltaY) > gameView.sizeOfMap){
+                 // вниз
+                 snake.setMove_bottom();
+             }else if(!snake.isMove_bottom() && deltaY < 0 && Math.max(Math.abs(deltaX), Math.abs(deltaY)) == Math.abs(deltaY) && Math.abs(deltaY) > gameView.sizeOfMap){
+                 // вверх
+                 snake.setMove_top();
              }
          }
         return true;
@@ -187,7 +182,7 @@ public class gameView extends View {
             snake.draw(canvas);
             apple.draw(canvas);
         }
-        handler.postDelayed(r, 500);
+        handler.postDelayed(r, 300);
     }
     public int getScore(){
         return (snake.getLength() - 4);
